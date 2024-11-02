@@ -1,0 +1,109 @@
+CREATE DATABASE verif;
+USE verif;
+CREATE TABLE users(
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    uname VARCHAR(50), 
+    upwd VARCHAR(50), 
+    uemail VARCHAR(50), 
+    umobile VARCHAR(20)
+);
+
+SELECT * FROM users;
+DESC users;
+TRUNCATE TABLE questions;
+
+CREATE TABLE admin(
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    aname VARCHAR(50), 
+    apwd VARCHAR(50), 
+    aemail VARCHAR(50), 
+    aid VARCHAR(10)
+);
+
+DROP TABLE admin;
+SELECT * FROM admin;
+
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255),
+    option1 VARCHAR(255),
+    option2 VARCHAR(255),
+    option3 VARCHAR(255),
+    option4 VARCHAR(255),
+    correct_option VARCHAR(1)
+);
+
+INSERT INTO questions (question, option1, option2, option3, option4, correct_option) VALUES
+('What is Java?', 'A database management system', 'A programming language', 'An operating system', 'A web browser', 'B'),
+('What is the main purpose of Java?', 'To create dynamic web pages', 'To develop mobile applications', 'To provide platform independence', 'To design databases', 'C'),
+('Which of the following is NOT a primitive data type in Java?', 'int', 'double', 'String', 'boolean', 'C'),
+('What is the correct syntax to declare a variable in Java?', 'var num;', 'int num;', 'variable num;', 'declare num;', 'B'),
+('Which keyword is used to define a class in Java?', 'class', 'object', 'define', 'type', 'A'),
+('What is the output of the following code? \nSystem.out.println("Hello" + "World");', '"HelloWorld"', '"Hello World"', 'HelloWorld', 'WorldHello', 'A'),
+('What is the purpose of the "public" access modifier in Java?', 'To restrict access to the class', 'To make a method or variable accessible to other classes', 'To make a method or variable accessible only within its own class', 'To prevent inheritance', 'B'),
+('Which of the following is NOT a control structure in Java?', 'if-else', 'for loop', 'switch-case', 'repeat-until', 'D'),
+('What is the Java Virtual Machine (JVM)?', 'A hardware component', 'A software component that provides the runtime environment for Java programs', 'A programming language', 'A web browser', 'B'),
+('What is the purpose of the "break" statement in Java?', 'To terminate a loop or switch statement', 'To skip the current iteration of a loop', 'To exit the entire program', 'To restart a loop', 'A');
+
+SELECT question, correct_option FROM questions;
+
+SELECT * FROM questions;
+
+DROP TABLE questions;
+
+CREATE TABLE user_answers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_number INT,
+    selected_option VARCHAR(255),
+    submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+SELECT * FROM user_answers;
+TRUNCATE user_answers;
+DROP TABLE user_answers;
+SELECT * FROM questions;
+
+CREATE TABLE responses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_number INT,
+    selected_option VARCHAR(255)
+);
+SELECT * FROM responses;
+USE verif;
+
+
+
+CREATE TABLE questionsPy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255),
+    option1 VARCHAR(255),
+    option2 VARCHAR(255),
+    option3 VARCHAR(255),
+    option4 VARCHAR(255),
+    correct_option VARCHAR(1)
+);
+
+DROP TABLE questionsPy;
+
+INSERT INTO questionsPy (question, option1, option2, option3, option4, correct_option) VALUES
+('What is Python?', 'A database management system', 'A programming language', 'An operating system', 'A web browser', 'B'),
+('What is the main purpose of Python?', 'To create dynamic web pages', 'To develop mobile applications', 'To provide platform independence', 'To design databases', 'C'),
+('Which of the following is NOT a primitive data type in Python?', 'int', 'double', 'String', 'boolean', 'B'),
+('What is the correct syntax to declare a variable in Python?', 'var num;', 'int num;', 'variable num;', 'declare num;', 'B'),
+('Which keyword is used to define a function in Python?', 'def', 'function', 'define', 'fun', 'A'),
+('What is the output of the following code? \nprint("Hello" + "World")', '"HelloWorld"', '"Hello World"', 'HelloWorld', 'WorldHello', 'A'),
+('What is the purpose of the "public" access modifier in Python?', 'To restrict access to the class', 'To make a method or variable accessible to other classes', 'To make a method or variable accessible only within its own class', 'To prevent inheritance', 'B'),
+('Which of the following is NOT a control structure in Python?', 'if-else', 'for loop', 'switch-case', 'repeat-until', 'C'),
+('What is PEP 8 in Python?', 'A package manager for Python', 'A version control system for Python', 'A style guide for Python code', 'A built-in function in Python', 'C'),
+('What is the purpose of the "pass" statement in Python?', 'To terminate a loop or switch statement', 'To indicate an empty block of code', 'To exit the entire program', 'To restart a loop', 'B');
+
+SELECT * FROM questionsPy;
+
+CREATE TABLE user_answersPy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_number INT,
+    selected_option VARCHAR(255),
+    submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM user_answersPy;
+DROP TABLE user_answersPy;
